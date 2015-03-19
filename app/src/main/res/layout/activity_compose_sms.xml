@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/toPhoneNumberTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number" />
+
+    <EditText
+        android:id="@+id/toPhoneNumberET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/smsMessageTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compose SMS" />
+
+    <EditText
+        android:id="@+id/smsMessageET"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"/>
+
+    <Button android:id="@+id/sendSMSBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="SEND SMS"/>
+
+</LinearLayout>
