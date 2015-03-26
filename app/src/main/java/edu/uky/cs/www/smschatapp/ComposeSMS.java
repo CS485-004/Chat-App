@@ -21,6 +21,8 @@ public class ComposeSMS extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_sms);
+        //Note: see activity_compose_sms.xml for the sendSMSBtn, toPhoneNumberET, smsMessageET
+        //button/
         sendSMSBtn = (Button) findViewById(R.id.sendSMSBtn);
         toPhoneNumberET = (EditText) findViewById(R.id.toPhoneNumberET);
         smsMessageET = (EditText) findViewById(R.id.smsMessageET);
@@ -31,6 +33,9 @@ public class ComposeSMS extends ActionBarActivity {
         });
     }
 
+    /**
+     *
+     */
     protected void sendSMS() {
         String toPhoneNumber = toPhoneNumberET.getText().toString();
         String smsMessage = smsMessageET.getText().toString();
