@@ -25,7 +25,7 @@ public class NotificationService extends Service {
     private ServiceHandler serviceHandler;
 
     private MySmsBroadcastReceiver receiver;
-    private final BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
+    /*private final BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -57,7 +57,7 @@ public class NotificationService extends Service {
                 //action for phone state changed
             }
         }
-    };
+    };*/
 
     // Handler that receives messages from the thread
     private final class ServiceHandler extends Handler {
@@ -72,7 +72,7 @@ public class NotificationService extends Service {
             filter.addAction(TelephonyManager.ACTION_PHONE_STATE_CHANGED);
 
             registerReceiver(receiver, filter);
-            registerReceiver(notificationReceiver, filter);
+//            registerReceiver(notificationReceiver, filter);
         }
     }
 

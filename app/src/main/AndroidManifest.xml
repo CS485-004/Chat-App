@@ -34,6 +34,12 @@
             android:name=".ComposeSMS"
             android:label="@string/title_activity_compose_sms" >
         </activity>
+
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>
