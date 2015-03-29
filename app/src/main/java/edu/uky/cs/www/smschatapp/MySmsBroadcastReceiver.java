@@ -58,6 +58,7 @@ public class MySmsBroadcastReceiver extends BroadcastReceiver {
 
             int id = 123; //needs to be an integer unique to this application to be able to update the notification later on after it's created. (or could create multiple notifications?)
             notificationManager.notify(id, builder.build());
+
             Toast.makeText(context, smsMessageStr, Toast.LENGTH_SHORT).show();
 
             //this will update the UI with message
