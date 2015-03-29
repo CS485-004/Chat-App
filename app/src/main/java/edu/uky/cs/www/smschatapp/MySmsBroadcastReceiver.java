@@ -20,6 +20,13 @@ public class MySmsBroadcastReceiver extends BroadcastReceiver {
 
     public static final String SMS_BUNDLE = "pdus";
 
+    /**
+     * onReceive
+     *  Purpose:
+     *      Listens for SMS messages and adds them to the main List.
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle intentExtras = intent.getExtras();
@@ -61,7 +68,7 @@ public class MySmsBroadcastReceiver extends BroadcastReceiver {
 
             Toast.makeText(context, smsMessageStr, Toast.LENGTH_SHORT).show();
 
-            //this will update the UI with message
+            //This updates the UI with message
             MainActivity inst = MainActivity.instance();
             inst.updateList(smsMessageStr);
         }

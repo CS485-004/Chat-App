@@ -17,6 +17,12 @@ public class ComposeSMS extends ActionBarActivity {
     EditText toPhoneNumberET;
     EditText smsMessageET;
 
+    /**
+     * onCreate
+     *  Purpose:
+     *      Handles tasks when the activity is first created.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +40,9 @@ public class ComposeSMS extends ActionBarActivity {
     }
 
     /**
-     *
+     * sendSMS()
+     * Purpose:
+     *  This helper function actually sends the SMS message.
      */
     protected void sendSMS() {
         String toPhoneNumber = toPhoneNumberET.getText().toString();
@@ -52,6 +60,13 @@ public class ComposeSMS extends ActionBarActivity {
         }
     }
 
+    /**
+     * onCreateOptionsMenu
+     *  Purpose:
+     *      This function inflates the top menu from the xml file.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -59,6 +74,13 @@ public class ComposeSMS extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * onOptionsItemSelected
+     *  Purpose:
+     *      This function handles clicks on items in the menu.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
