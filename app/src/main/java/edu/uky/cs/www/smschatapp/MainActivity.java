@@ -44,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     ListView smsListView;       //The ListView for this activity
     ArrayAdapter arrayAdapter;  //An array adapter to put sms messages into the ListView
 
+    //Singleton pattern
     public static MainActivity instance() {
         return inst;
     }
