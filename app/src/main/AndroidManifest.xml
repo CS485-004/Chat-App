@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".MySmsBroadcastReceiver" android:exported="true" >
+        <receiver
+            android:name=".MySmsBroadcastReceiver"
+            android:exported="true" >
             <intent-filter android:priority="999" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
@@ -34,10 +36,9 @@
             android:name=".ComposeSMS"
             android:label="@string/title_activity_compose_sms" >
         </activity>
-
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/action_settings">
+            android:label="@string/action_settings" >
         </activity>
 
         <service
@@ -45,6 +46,15 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name=".read_messages"
+            android:label="@string/title_activity_read_messages"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.uky.cs.www.smschatapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

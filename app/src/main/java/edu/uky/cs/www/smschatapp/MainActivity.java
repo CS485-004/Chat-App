@@ -141,7 +141,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             String smsMessageStr = address + "\n";
             smsMessageStr += smsMessage;
             Toast.makeText(this, smsMessageStr, Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(this, read_messages.class);
+            startActivity(intent);
             /**
              * TODO:
              * This should really launch another activity for reading all messages
