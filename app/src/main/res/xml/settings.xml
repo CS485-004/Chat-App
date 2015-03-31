@@ -3,6 +3,5 @@
     <CheckBoxPreference
         android:key="pref_notifications"
         android:title="@string/pref_notifications"
-        android:summary="@string/pref_notifications_desc"
         android:defaultValue="true" />
 </PreferenceScreen>
