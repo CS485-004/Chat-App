@@ -35,6 +35,11 @@
             android:label="@string/title_activity_compose_sms" >
         </activity>
 
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings">
+        </activity>
+
         <service
             android:name=".NotificationService"
             android:enabled="true"
