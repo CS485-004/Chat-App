@@ -2,6 +2,7 @@ package edu.uky.cs.www.smschatapp;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 
 public class SettingsActivity extends ActionBarActivity {
@@ -12,6 +13,9 @@ public class SettingsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Create a default empty ActionBar
+        ActionBar actionBar = getSupportActionBar();
 
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
     }
