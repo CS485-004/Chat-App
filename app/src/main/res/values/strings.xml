@@ -6,4 +6,7 @@
     <string name="title_activity_compose_sms">ComposeSMS</string>
 
     <string name="action_compose">Compose</string>
+
+    <string name="pref_notifications">Notifications On</string>
+    <string name="pref_notifications_desc">notifications settings test</string>
 </resources>
