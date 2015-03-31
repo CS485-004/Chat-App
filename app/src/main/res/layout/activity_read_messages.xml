@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:gravity="bottom"
+    android:weightSum="1"
+    tools:context="edu.uky.cs.www.smschatapp.read_messages">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISPLAY_NAME"
+        android:id="@+id/displayName"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_horizontal" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="487dp"
+        android:id="@+id/listView"
+        android:layout_gravity="bottom"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Compose Message"
+        android:id="@+id/composeButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:onClick="composeMessage"/>
+</LinearLayout>
