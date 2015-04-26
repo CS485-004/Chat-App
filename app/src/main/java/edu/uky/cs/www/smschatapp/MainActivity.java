@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ import java.util.ArrayList;
 
 //The ActionBarActivity is the top menu bar in Activities
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
+
+    private final String TAG = "SMSCHATAPP";
 
     private static MainActivity inst;
     ArrayList<String> smsMessagesList = new ArrayList<String>();
@@ -143,7 +146,15 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             smsMessageStr += smsMessage;
             Toast.makeText(this, smsMessageStr, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, read_messages.class);
+
+            String phoneNumber = address.split("\\s+")[2];
+            intent.putExtra(TAG, phoneNumber);
+            Log.v(TAG, smsMessage);
             startActivity(intent);
+
+
+
+
             /**
              * TODO:
              * This should really launch another activity for reading all messages
