@@ -55,6 +55,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.uky.cs.www.smschatapp.MainActivity" />
         </activity>
+        <service
+            android:name=".SchedulerService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".SchedulerActivity"
+            android:label="@string/title_activity_scheduler" >
+        </activity>
     </application>
 
 </manifest>

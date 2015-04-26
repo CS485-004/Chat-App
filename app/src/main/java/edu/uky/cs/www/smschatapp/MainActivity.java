@@ -1,6 +1,7 @@
 package edu.uky.cs.www.smschatapp;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -16,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-//test
+
 /**
  * MainActivity.java
  *
@@ -192,6 +193,11 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
              * Launches our Compose activity.
              */
             Intent intent = new Intent(this, ComposeSMS.class);
+            startActivity(intent);
+            return true;
+        }
+        if (id == R.id.action_alarm) {
+            Intent intent = new Intent(this, SchedulerActivity.class);
             startActivity(intent);
             return true;
         }

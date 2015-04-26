@@ -95,6 +95,11 @@ public class ComposeSMS extends ActionBarActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.action_alarm) {
+            Intent intent = new Intent(this, SchedulerActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
