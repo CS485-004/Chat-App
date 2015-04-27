@@ -10,12 +10,17 @@ https://github.com/CS485-004/Chat-App
   https://developer.android.com/tools/building/building-studio.html
 
 ##Synopsis
-The program meets the following requirements.
+###An SMS Android Application
+The goals for this project were to create an Android application capable of sending and receiving SMS messages between devices with SMS capabilities.  The target platform for this application is Android 4.0 (Ice Cream Sandwich) and later.
+
+The program meets the following requirements:
 
 * A main activity displaying recent contacts.
 * An options menu allowing users to enable or disable notifications.
 * A new message activity that allows the user to send an SMS message to a phone number.
 * A chatting conversation activity listing the received and sent messages to a contact.
+
+See the requirements repository in this organization for the detailed list of requirements. 
 
 ##Known Bugs and Limitations
 
