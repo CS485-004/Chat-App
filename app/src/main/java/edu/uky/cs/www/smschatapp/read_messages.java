@@ -52,6 +52,15 @@ public class read_messages extends ActionBarActivity {
 
     }
 
+    /**
+     * refreshSmsInbox
+     * Purpose:
+     *  Given a phone number, show the conversation between this number and that one.
+     * Preconditions;
+     *  The intent used to start this activity will have an extra string: the other phone number.
+     * Post-conditions:
+     *  A list view of sms messages between this number and that number.
+     */
     public void refreshSmsInbox() {
 
         // Getting the contact number from the intent
@@ -140,6 +149,16 @@ public class read_messages extends ActionBarActivity {
         } while (smsInboxCursor.moveToNext());
     }
 
+    /**
+     * getContactDisplayNameByNumber
+     * Purpose:
+     *  Gets the contact name if exising from the contacts.
+     * Preconditions:
+     * @param number A string representing a phone number
+     * @return
+     * Post-conditions:
+     *  Returns either a contact name or "?"
+     */
     public String getContactDisplayNameByNumber(String number) {
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
         String name = "?";

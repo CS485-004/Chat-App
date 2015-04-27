@@ -1,7 +1,6 @@
 package edu.uky.cs.www.smschatapp;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -147,23 +146,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             Toast.makeText(this, smsMessageStr, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, read_messages.class);
 
+            //Getting the phone number
             String phoneNumber = address.split("\\s+")[2];
             intent.putExtra(TAG, phoneNumber);
             Log.v(TAG, smsMessage);
+            // Finally, launch the activity.
             startActivity(intent);
 
-
-
-
-            /**
-             * TODO:
-             * This should really launch another activity for reading all messages
-             * from that person.  Need to interleave sent messages to that person somehow as well.
-             *
-             * Intent intent = new Intent(this, AnotherActivity.class);
-             * intent.putExtra(EXTRA_STRING, _id);
-             * startActivity(intent);
-             */
 
         } catch (Exception e) {
             e.printStackTrace();
