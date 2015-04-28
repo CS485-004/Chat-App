@@ -10,5 +10,5 @@
         android:title="@string/action_compose"
         tools:showAsAction="ifRoom|withText"/>
     <item android:id="@+id/action_alarm"
-        android:title="Create Alarm" />
+        android:title="@string/title_activity_scheduler" />
 </menu>

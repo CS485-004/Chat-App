@@ -62,6 +62,7 @@ public class MySmsBroadcastReceiver extends BroadcastReceiver {
                         .setSmallIcon(R.drawable.ic_action_chat)
                         .setContentTitle("Message from " + smsAddress)
                         .setContentText(smsBody);
+                builder.setAutoCancel(true);
 
                 Intent notificationIntent = new Intent(context, MainActivity.class);
                 // The stack builder object will contain an artificial back stack for the started Activity.

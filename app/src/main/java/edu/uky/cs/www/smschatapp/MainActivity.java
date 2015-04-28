@@ -89,9 +89,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         smsListView.setAdapter(arrayAdapter);
         smsListView.setOnItemClickListener(this);
 
-        //NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        //notificationManager.cancel(NOTIFICATION_ID);
-
         //Helper function
         refreshSmsInbox();
     }

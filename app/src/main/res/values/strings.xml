@@ -19,7 +19,7 @@
         <item>Long</item>
     </string-array>
     <string name="pref_vibration_type_default">Medium</string>
-    <string name="title_activity_scheduler">Create Alarm</string>
-    <string name="title_activity_read_messages">read_messages</string>
+    <string name="title_activity_scheduler">Scheduled Message</string>
+    <string name="title_activity_read_messages">@string/app_name</string>
     <string name="display_name"></string>
 </resources>
