@@ -80,6 +80,7 @@ public class read_messages extends ActionBarActivity {
         arrayAdapter.clear();
 
         // Get this contact's name
+        //MainActivity mainactivity_instance = new MainActivity();
         String contactName = getContactDisplayNameByNumber(contactNumber);
         displayName.setText(contactName);
 
@@ -125,19 +126,21 @@ public class read_messages extends ActionBarActivity {
                 boolean advance = false;
                 do {
                     // Do the same thing to get the next sent message
-                    sentNumber = smsSentCursor.getString(indexAddress);
-                    strSentDate = smsSentCursor.getString(indexDate);
-                    longSentDate = Long.parseLong(strSentDate, 10);
-                    formattedSentDate = new SimpleDateFormat("MM/dd/yyy").format(longSentDate);
-                    Log.v(TAG, "SENT: " + sentNumber);
+                    if (sentSMSExist) {
+                        sentNumber = smsSentCursor.getString(indexAddress);
+                        strSentDate = smsSentCursor.getString(indexDate);
+                        longSentDate = Long.parseLong(strSentDate, 10);
+                        formattedSentDate = new SimpleDateFormat("MM/dd/yyy").format(longSentDate);
+                        Log.v(TAG, "SENT: " + sentNumber);
 
-                    String sentStr = "I sent at " + formattedSentDate + ":\n"
-                            + smsSentCursor.getString(indexBody) + "\n";
-                    advance = false;
-                    if (longGotDate < longSentDate){
-                        arrayAdapter.add(sentStr);
-                        Log.v(TAG, "ADDED: " + sentStr);
-                        advance = true;
+                        String sentStr = "I sent at " + formattedSentDate + ":\n"
+                                + smsSentCursor.getString(indexBody) + "\n";
+                        advance = false;
+                        if (longGotDate < longSentDate) {
+                            arrayAdapter.add(sentStr);
+                            Log.v(TAG, "ADDED: " + sentStr);
+                            advance = true;
+                        }
                     }
                 } while (advance && smsSentCursor.moveToNext() && longGotDate < longSentDate);
 

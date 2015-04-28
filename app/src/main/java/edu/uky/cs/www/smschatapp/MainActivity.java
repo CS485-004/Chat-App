@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.BaseColumns;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -104,11 +106,48 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         if (indexBody < 0 || !smsInboxCursor.moveToFirst()) return;
         arrayAdapter.clear();
         //Add all these messages into the List
+        int i = 0;
         do {
-            String str = "SMS From: " + smsInboxCursor.getString(indexAddress) +
+            String phoneNumber = smsInboxCursor.getString(indexAddress);
+            String contactName = getContactDisplayNameByNumber(phoneNumber);
+
+            String str = phoneNumber + " : " + contactName +
                     "\n" + smsInboxCursor.getString(indexBody) + "\n";
             arrayAdapter.add(str);
-        } while (smsInboxCursor.moveToNext());
+        } while (smsInboxCursor.moveToNext() && (i = i +1) < 100);
+    }
+
+    /**
+     * getContactDisplayNameByNumber
+     * Purpose:
+     *  Gets the contact name if exising from the contacts.
+     * Preconditions:
+     * @param number A string representing a phone number
+     * @return
+     * Post-conditions:
+     *  Returns either a contact name or "?"
+     */
+    public String getContactDisplayNameByNumber(String number) {
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
+        String name = "?";
+
+        ContentResolver contentResolver = getContentResolver();
+        Cursor contactLookup = contentResolver.query(uri, new String[] {BaseColumns._ID,
+                ContactsContract.PhoneLookup.DISPLAY_NAME }, null, null, null);
+
+        try {
+            if (contactLookup != null && contactLookup.getCount() > 0) {
+                contactLookup.moveToNext();
+                name = contactLookup.getString(contactLookup.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
+                //String contactId = contactLookup.getString(contactLookup.getColumnIndex(BaseColumns._ID));
+            }
+        } finally {
+            if (contactLookup != null) {
+                contactLookup.close();
+            }
+        }
+
+        return name;
     }
 
     /**
@@ -147,7 +186,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             Intent intent = new Intent(this, read_messages.class);
 
             //Getting the phone number
-            String phoneNumber = address.split("\\s+")[2];
+            String phoneNumber = address.split("\\s+")[0];
             intent.putExtra(TAG, phoneNumber);
             Log.v(TAG, smsMessage);
             // Finally, launch the activity.
