@@ -54,7 +54,7 @@ public class MySmsBroadcastReceiver extends BroadcastReceiver {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             //Get the value for notifications
             boolean notificationsOn = sharedPreferences.getBoolean(SettingsActivity.NOTIFICATIONS_KEY, true);
-            boolean vibratorOn = sharedPreferences.getBoolean(SettingsActivity.VIBRATION_KEY, true);
+            //boolean vibratorOn = sharedPreferences.getBoolean(SettingsActivity.VIBRATION_KEY, true);
 
             if (notificationsOn) {
                 //Build the notification:
