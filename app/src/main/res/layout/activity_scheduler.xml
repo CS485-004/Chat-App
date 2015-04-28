@@ -32,7 +32,7 @@
         android:id="@+id/alarm_delay_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delay (s)"
+        android:text="Time"
         android:textSize="10pt" >
     </TextView>
     <TimePicker
