@@ -25,11 +25,7 @@ public class SchedulerService extends Service {
         }
         @Override
         public void handleMessage(Message msg) {
-            // Normally we would do some work here, like download a file.
-            // For our sample, we just sleep for 5 seconds.
-            Toast.makeText(SchedulerService.this, "send message here", Toast.LENGTH_LONG).show();
             sendSMS(toPhoneNumber, message);
-//            sendSMS("8599486338", "This is a scheduled test!");
             // Stop the service using the startId, so that we don't stop
             // the service in the middle of handling another job
             stopSelf(msg.arg1);
@@ -40,11 +36,11 @@ public class SchedulerService extends Service {
         try {
             SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(toPhoneNumber, null, smsMessage, null, null);
-            Toast.makeText(getApplicationContext(), "SMS sent.",
+            Toast.makeText(getApplicationContext(), "Scheduled SMS sent.",
                     Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),
-                    "Sending SMS failed.",
+                    "Sending Alarm SMS failed.",
                     Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
@@ -66,8 +62,6 @@ public class SchedulerService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
-
         toPhoneNumber = intent.getStringExtra(String.valueOf(R.id.alarm_number));
         message = intent.getStringExtra(String.valueOf(R.id.alarm_message));
 
@@ -89,6 +83,6 @@ public class SchedulerService extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
+
     }
 }

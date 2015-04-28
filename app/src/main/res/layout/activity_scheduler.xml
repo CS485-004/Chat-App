@@ -35,12 +35,11 @@
         android:text="Delay (s)"
         android:textSize="10pt" >
     </TextView>
-    <EditText
-        android:id="@+id/alarm_delay"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number">
-    </EditText>
+    <TimePicker
+        android:id="@+id/alarm_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </TimePicker>
     <Button
         android:id="@+id/alarm_create"
         android:layout_height="wrap_content"

@@ -1,6 +1,8 @@
 package edu.uky.cs.www.smschatapp;
 
+import android.app.NotificationManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -45,6 +47,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     ListView smsListView;       //The ListView for this activity
     ArrayAdapter arrayAdapter;  //An array adapter to put sms messages into the ListView
 
+    public static final int NOTIFICATION_ID = 8675309;
+
     //Singleton pattern
     public static MainActivity instance() {
         return inst;
@@ -84,6 +88,9 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, smsMessagesList);
         smsListView.setAdapter(arrayAdapter);
         smsListView.setOnItemClickListener(this);
+
+        //NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        //notificationManager.cancel(NOTIFICATION_ID);
 
         //Helper function
         refreshSmsInbox();

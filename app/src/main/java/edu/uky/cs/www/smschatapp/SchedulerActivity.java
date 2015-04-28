@@ -10,16 +10,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class SchedulerActivity extends ActionBarActivity {
+
+    private TimePicker timePicker;
+
+    private int hour;
+    private int minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scheduler);
+
+        setCurrentTime();
     }
 
 
@@ -60,12 +70,25 @@ public class SchedulerActivity extends ActionBarActivity {
         final EditText editMessage = (EditText) findViewById(R.id.alarm_message);
         String message = editMessage.getText().toString();
 
-        final EditText editAlarmDelay = (EditText) findViewById(R.id.alarm_delay);
-        String alarmDelay = editAlarmDelay.getText().toString();
+        Calendar time = Calendar.getInstance();
+        time.set(Calendar.HOUR_OF_DAY, timePicker.getCurrentHour());
+        time.set(Calendar.MINUTE, timePicker.getCurrentMinute());
+        time.set(Calendar.SECOND, 0);
+        Date setDate = time.getTime();
 
         Calendar calendar = Calendar.getInstance();
-        // Start 30 seconds after boot completed
-        calendar.add(Calendar.SECOND, Integer.valueOf(alarmDelay));
+        Date currentDate = calendar.getTime();
+        int delay = (int) (setDate.getTime() - currentDate.getTime()) / 1000;
+        if (delay < 0) {
+            delay *= -1;
+            Calendar dayCalendar = Calendar.getInstance();
+            dayCalendar.set(Calendar.HOUR_OF_DAY, 23);
+            dayCalendar.set(Calendar.MINUTE, 59);
+            dayCalendar.set(Calendar.SECOND, 59);
+            Date dayDate = dayCalendar.getTime();
+            delay += (int) dayDate.getTime() / 1000;
+        }
+        calendar.add(Calendar.SECOND, delay);
         Intent intent = new Intent(this, SchedulerService.class);
 
         intent.putExtra(String.valueOf(R.id.alarm_number), toPhoneNumber);
@@ -77,5 +100,16 @@ public class SchedulerActivity extends ActionBarActivity {
 
         Intent destinationIntent = new Intent(this, MainActivity.class);
         startActivity(destinationIntent);
+    }
+
+    public void setCurrentTime() {
+        timePicker = (TimePicker) findViewById(R.id.alarm_time);
+
+        final Calendar calendar = Calendar.getInstance();
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
+
+        timePicker.setCurrentHour(hour);
+        timePicker.setCurrentMinute(minute);
     }
 }
